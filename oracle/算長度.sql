@@ -1,0 +1,3 @@
+SELECT LENGTH('ABC') FROM DUAL;  --算長度
+SELECT LENGTHB('ABC') FROM DUAL;  --算Byte長度
+SELECT LENGTH(RAWTOHEX(CONVERT('A你好喔', 'ZHT16BIG5'))) FROM DUAL;  --把英文/數字 會是2碼 和 中文一致。 算幾個字元

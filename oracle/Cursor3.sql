@@ -1,0 +1,27 @@
+-- 用 組 SQL 來跑 CURSOR
+CREATE OR REPLACE PROCEDURE SQL_CURSOR(P_MIN_ID IN NUMBER) IS
+    
+    -- 宣告 CURSOR 類型
+    TYPE REF_CUR IS REF CURSOR;
+    CUR_DATA REF_CUR;
+  
+    V_SQL       VARCHAR2(4000);
+
+    V_TABLEA TableA%ROWTYPE;
+  BEGIN
+  
+    -- 組 SQL
+    V_SQL := 'SELECT * FROM TABLE WHERE ID >= ' || TO_CHAR(P_MIN_ID);
+
+    -- 跑 CURSOR
+    OPEN CUR_DATA FOR V_SQL;
+    LOOP
+        FETCH CUR_DATA
+            INTO V_TABLEA;
+          EXIT WHEN CUR_DATA%NOTFOUND;
+        
+          -- TODO:       
+    END LOOP;
+    CLOSE CUR_DATA;
+  
+  END;

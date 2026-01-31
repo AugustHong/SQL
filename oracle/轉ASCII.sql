@@ -1,0 +1,1 @@
+SELECT ascii('A') FROM DUAL;  --轉成 ASCII碼 (A -> 65)

@@ -1,0 +1,2 @@
+SELECT ROUND(323.231, 2) FROM DUAL;  --四捨五入取到小數點第X位
+SELECT CEIL(321.23) FROM DUAL;  --無條件進位

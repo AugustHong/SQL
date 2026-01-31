@@ -1,0 +1,1 @@
+SELECT SUBSTR('ABC', 1, 1) FROM DUAL; --截取字串(字串, 從第幾位開始(從1開始), 取幾碼)

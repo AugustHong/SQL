@@ -1,0 +1,2 @@
+SELECT UPPER('abc') FROM DUAL;  --轉大寫
+SELECT LOWER('ABC') FROM DUAL;  --轉小寫

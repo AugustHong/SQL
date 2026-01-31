@@ -1,0 +1,1 @@
+IF NVL(NULL, 'A') FROM DUAL;  --同 MSSQL 的 ISNULL ，就是 當值是 NULL 給後面的指定值

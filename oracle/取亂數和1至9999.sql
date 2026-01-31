@@ -1,0 +1,7 @@
+-- 取出 1-9999
+SELECT LEVEL NUM_LIST
+FROM DUAL
+CONNECT BY LEVEL <= 9999;
+
+-- 取亂數
+SELECT LPAD(CEIL(dbms_random.value * 1000), 3, '0') FROM DUAL;

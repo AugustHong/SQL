@@ -1,0 +1,1 @@
+SELECT MOD(5, 3) FROM DUAL; -- 取餘數

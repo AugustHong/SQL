@@ -1,0 +1,1 @@
+SELECT TO_NUMBER('123') FROM DUAL;  --轉成數字

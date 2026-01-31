@@ -1,0 +1,5 @@
+SELECT SYSDATE FROM DUAL;  --取到系統日
+SELECT TRUNC(SYSDATE) FROM DUAL; --用 TRUNC(日期資料型別) 轉成 date (例如： 2023-11-01 12:00:00 會變成 2023-11-01)
+SELECT TRUNC(SYSDATE, 'DD') FROM DUAL;  --只取到日
+
+-- TRUNC 的用法還有其他，但比較常用在這邊

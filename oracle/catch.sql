@@ -1,0 +1,40 @@
+create or replace procedure CATCH_SP is
+   -- 自訂錯誤
+   NEW_E EXCEPTION;
+BEGIN
+    
+  BEGIN 
+    -- TODO:
+
+    -- 拋自訂錯誤
+    RAISE NEW_E;
+  EXCEPTION
+   WHEN DUP_VAL_ON_INDEX THEN
+      -- 重複值錯誤
+      -- RAISE_APPLICATION_ERROR(自定代碼, 訊息)  -> 拋出錯誤
+      -- SQLERRM 會得到錯誤訊息
+      RAISE_APPLICATION_ERROR(-20001,SQLERRM || ':[DUPLICATE ERROR]');
+   WHEN OTHERS THEN
+      --其他錯誤
+      RAISE_APPLICATION_ERROR(-20001,SQLERRM || ':[OTHERS ERROR]');
+   WHEN NEW_E THEN
+      -- 自定的錯誤
+      RAISE_APPLICATION_ERROR(-20001,SQLERRM || ':[自定ERROR]');
+   WHEN VALUE_ERROR THEN
+      -- 轉數字失數
+      RAISE_APPLICATION_ERROR(-20001,SQLERRM || ':[ERROR]');
+   WHEN PROGRAM_ERROR THEN
+      -- 程式錯誤
+      RAISE_APPLICATION_ERROR(-20001,SQLERRM || ':[ERROR]');
+   WHEN TOO_MANY_ROWS THEN
+      -- 太多資料 (會發生在 SELECT INTO 只能1筆)
+      RAISE_APPLICATION_ERROR(-20001,SQLERRM || ':[ERROR]');
+  END ;
+
+EXCEPTION
+   WHEN OTHERS THEN
+      ROLLBACK;
+      RAISE_APPLICATION_ERROR(-20001,SQLERRM);
+END CATCH_SP;
+/
+

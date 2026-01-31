@@ -1,0 +1,1 @@
+SELECT 'ABC' || 'DEF' || 'GHI' FROM DUAL;  --字串串接 (只要有1個是NULL，出來的結果就是NULL)

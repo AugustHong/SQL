@@ -1,0 +1,1 @@
+SELECT REPLACE('ABC', 'A', 'D') FROM DUAL;  --就是替換文字 (將 ABC 的 A 字串 換成 D)

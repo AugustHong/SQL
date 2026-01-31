@@ -1,0 +1,4 @@
+SELECT TO_CHAR(123) FROM DUAL;  --數字轉字串，後面可以再接 要轉的格式
+SELECT TO_CHAR(123.456, 'FM90.00') FROM DUAL;  -- 9 是不一定要有， 0是沒有會補0  (依實際要用時測測看轉出來符不符合)
+SELECT TO_CHAR(SYSDATE, 'YYYYMMDD') FROM DUAL;  --轉成 YYYYMMDD
+SELECT TO_CHAR(SYSDATE, 'HH24miss') FROM DUAL;  --轉成 24小時分秒
