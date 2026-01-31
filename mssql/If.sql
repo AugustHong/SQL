@@ -1,0 +1,32 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER PROCEDURE [dbo].[IfDemo] 
+	@V_INPUT INT,
+	@O_OUTPUT VARCHAR(10) OUTPUT
+AS
+BEGIN
+	
+	IF @V_INPUT <= 10
+	BEGIN
+		SET @O_OUTPUT = 'A';
+	END
+	ELSE IF @V_INPUT <= 100
+	BEGIN
+		SET @O_OUTPUT = 'B';
+	END
+	ELSE
+	BEGIN
+		SET @O_OUTPUT = 'C';
+	END
+END
+
+
+
+----------------------------------------------------------------------------
+-- 執行時， OUTPUT的要寫 OUTPUT
+DECLARE	@O_OUTPUT varchar(10)
+EXEC	IfDemo @V_INPUT = 3, @O_OUTPUT = @O_OUTPUT OUTPUT   --執行SP
+SELECT	@O_OUTPUT as N'@O_OUTPUT'

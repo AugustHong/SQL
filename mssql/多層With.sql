@@ -1,0 +1,8 @@
+--多層 WITH
+WITH A AS (
+	SELECT * FROM TableA WHERE PK_C <= 30
+),
+B AS (
+	SELECT * FROM A WHERE PK_C > 10
+)
+SELECT * FROM B

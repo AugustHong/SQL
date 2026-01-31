@@ -1,0 +1,33 @@
+/* 日期 加1個月…等操作*/
+
+-- 加減2年
+SELECT DATEADD(year, 2, GETDATE())
+SELECT DATEADD(year, -2, GETDATE())
+
+-- 加減2個月
+SELECT DATEADD(month, 2, GETDATE())
+SELECT DATEADD(month, -2, GETDATE())
+
+-- 加減2天
+SELECT DATEADD(day, 2, GETDATE())
+SELECT DATEADD(day, -2, GETDATE())
+
+-- 加減2小時
+SELECT DATEADD(hour, 2, GETDATE())
+SELECT DATEADD(hour, -2, GETDATE())
+
+-- 加減2分鐘
+SELECT DATEADD(minute, 2, GETDATE())
+SELECT DATEADD(minute, -2, GETDATE())
+
+-- 加減2秒
+SELECT DATEADD(second, 2, GETDATE())
+SELECT DATEADD(second, -2, GETDATE())
+
+-- 加減2季
+SELECT DATEADD(quarter, 2, GETDATE())
+SELECT DATEADD(quarter, -2, GETDATE())
+
+-- 加減2週
+SELECT DATEADD(week, 2, GETDATE())
+SELECT DATEADD(week, -2, GETDATE())

@@ -1,0 +1,1 @@
+SELECT @@VERSION  --看SQL Server 版本

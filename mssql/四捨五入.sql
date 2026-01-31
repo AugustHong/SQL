@@ -1,0 +1,2 @@
+SELECT ROUND(123.45, 1) ;  --四捨五入
+SELECT CEILING(123.45);  --無條件進位

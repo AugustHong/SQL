@@ -1,0 +1,29 @@
+DECLARE @COLUMN_LIST VARCHAR(300);
+WITH TmpTable AS (
+     SELECT CODE_TYPE, CODE_VALUE FROM CODE_TABLE WHERE CODE_TYPE = 'TEST'
+)
+    -- 組成 A,B,C
+    SELECT @COLUMN_LIST = STUFF((
+       SELECT ',' + t1.CODE_VALUE
+         FROM TmpTable t1
+        WHERE t1.CODE_TYPE = t0.CODE_TYPE
+        ORDER BY t1.CODE_VALUE
+          FOR XML PATH('')), 1, LEN(','), '')
+        FROM TmpTable t0
+      GROUP BY t0.CODE_TYPE;
+
+ SELECT @COLUMN_LIST;
+
+ DECLARE @SQL NVARCHAR(4000) = 'SELECT *
+FROM (
+	SELECT H.ID, H.H_TYPE, H.money
+	FROM TableH H
+) t 
+PIVOT (
+	MAX(money) 
+	FOR H_TYPE IN (' +  @COLUMN_LIST +  ')
+) p;'
+
+SELECT @SQL;
+
+EXEC sp_executesql @SQL;

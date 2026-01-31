@@ -1,0 +1,12 @@
+-- 傳入 Type 的 SP (其中的 TEST_TYPE 就是我們建立的 TYPE類別)
+CREATE PROCEDURE [dbo].[PROC_TYPE]  @TYPE_TABLE  TEST_TYPE
+AS
+BEGIN
+   
+   UPDATE TableA
+   SET C1 = T.STR
+   FROM TableA A
+   INNER JOIN @TYPE_TABLE T
+   ON A.C_PK = T.ID;
+   
+END

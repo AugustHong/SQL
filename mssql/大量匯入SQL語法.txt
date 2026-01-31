@@ -1,0 +1,27 @@
+(1) 去 Cmd 執行以下指令：
+    先下 chcp 65001  會將接下來轉為 UTF-8編碼
+    再下 sqlcmd -S localhost -E -d 資料庫名稱(ABC) -i "檔案路徑(例：  C:\Scripts\bigfile.sql)" -f 65001
+
+(2) 說明：
+    -E 是指用 Windows登入，所要改用帳密登入 要再查一下寫法
+    -f 是指用什麼編碼 (-f 65001 是指 UTF8) (備註：若要使用UTF8，執行指令前先執行 chcp 65001 指令，這邊才不會出現亂碼)
+    -S 後面的是指 Service名稱 (例如： localhost 或是 你的 連線的名稱)
+
+----------------------------------------------------------------------------------------------------------------------
+如果檔案量太大，建議使用 CSV檔，然後去 SSMS執行這段 SQL
+
+-- 執行 BULK INSERT
+BULK INSERT 要寫入的資料表名稱(dbo.ABC)
+FROM 'C:\InsertData.csv'
+WITH (
+    FIELDTERMINATOR = ',',
+    ROWTERMINATOR = '\n',
+    FIRSTROW = 2,   -- 從第2行開始，有些csv第一行是標頭
+    CODEPAGE = '65001'  -- UTF-8 編碼
+);
+
+執行前可以先使用 EXEC xp_fileexist 'C:\InsertData.csv'; 找找看能不能查到 (1 = 查得到 / 0 = 查不到)
+------------------------------------------------------------------------------------------------------------------------
+
+這方法也很快，因為 BULK INSERT 有時候檔案一直抓不到：
+(1) 使用 SSMS 對 DB 右鍵 / 工作 / 匯入一般檔案。 到新的Table，再用  INSERT INTO ... SELECT * FROM 新表
